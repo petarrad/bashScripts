@@ -1,0 +1,40 @@
+#!/bin/bash
+#
+# SQL Dumper
+#
+# This script will dump MySQL & PostgreSQL databases to a directory, to be
+# backed up or.... whatever.
+#
+# Copyright 2011 Eugene E. Kashpureff (eugene@kashpureff.org)
+# License: WTFPL, any version or GNU General Public License, version 3+
+#
+
+dumpdir="/data/backups"
+timestamp=`date +"%Y-%m-%d_%H:%M"`
+
+
+skip=(mysql information_schema performance_schema template0)
+
+## MySQL
+for db in `mysql -e "SHOW DATABASES;" | tr -d "| " | grep -v Database`
+do
+	# Skip some databases
+	for skipped in "${skip[@]}"; do
+		if [[ "$skipped" == "$db" ]]
+		then
+			continue 2
+		fi
+	done
+
+	# Dump DB, run through gzip, save to file
+	mysqldump -eq -h localhost ${db} | gzip -c - > "${dumpdir}/mysql/${db}_${timestamp}.sql.gz"
+	
+done
+
+
+
+## Clean out old dumps
+find ${dumpdir}/mysql/ -type f -mtime +14 -exec rm {} \;
+find ${dumpdir}/postgres/ -type f -mtime +14 -exec rm {} \;
+
+unset dumpdir timestamp db skip skipped
