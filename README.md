@@ -1,2 +1,0 @@
-# shNix
-bash sh hosting
