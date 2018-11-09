@@ -1,0 +1,8 @@
+job-za-proveru:
+  stage: provera
+  script: 
+   - echo "$CI_COMMIT_MESSAGE"
+   - echo "$CI_COMMIT_SHA"
+  only:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /skip-end-to-end-tests/
