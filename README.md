@@ -4,7 +4,9 @@ For a long time, /bin/sh used to point to /bin/bash on most GNU/Linux systems. B
 
 Bash stands for "Bourne Again SHell", and is a replacement/improvement of the original Bourne shell (sh).
 
-What is shell? A Shell provides you with an interface to the Unix system. Shell is between user and kernel.
+What is shell? A Shell provides you with an interface to the Unix system. 
+
+Shell is between user and kernel.
 
 ## bash-ix
 ~ this should be a place for bash (shell) scripting tricks ~
