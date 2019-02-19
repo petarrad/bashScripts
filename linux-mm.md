@@ -2,6 +2,8 @@
 
 The term “memory management” refers to the mechanisms implemented by an operating system to provide applications with memory-related services. 
 
+Memory management is the heart of operating systems; it is crucial for both programming and system administration. Memory management is one of the most complex activity done by Linux kernel. Best approach to learn it would be to read the code.
+
 ## Structure of the Linux memory management
 
 Memory management services in the Linux are built on a programming foundation that includes a peripheral device called __Memory Management Unit (MMU).__
